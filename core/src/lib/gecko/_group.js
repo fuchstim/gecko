@@ -17,9 +17,6 @@ class Group {
     };
   }
 
-  get groups() { return this.children.filter(c => typeof child === Group); }
-  get interactions() { return this.children.filter(c => typeof child === Interaction); }
-
   bindGlobals() {
     global.group = (name, fn) => this.addChild(Group.create(name, fn));
     global.interaction = (name, fn) => this.addChild(Interaction.create(name, fn));
@@ -46,6 +43,17 @@ class Group {
     }, Promise.resolve());
 
     await this._executeHooks(this.hooks.after);
+  }
+
+  getMeasurements() {
+    const measurements = this.children.map(c => ({
+      id: c.id,
+      name: c.name,
+      type: 'group',
+      measurements: c.getMeasurements(),
+    }));
+
+    return measurements;
   }
 
   async _executeHooks(hooks) {

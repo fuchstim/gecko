@@ -1,26 +1,26 @@
 const Group = require('./_group');
+const { addCustomProfiler } = require('../profilers');
 
 class Gecko {
   constructor(options) {
-    this.measurements = [];
+    this._setupCustomProfilers(options.customProfilers);
 
     this.rootGroup = Group.create('🦎', () => {});
 
     this.rootGroup.bindGlobals();
   }
 
-  get results() {
-    return this._formatMeasurements(this.measurements);
+  _setupCustomProfilers(customProfilers) {
+    customProfilers.forEach(p => addCustomProfiler(p));
   }
 
   async run() {
     await this.rootGroup.execute();
-  }
 
-  _formatMeasurements(measurements) {
+    const measurements = this.rootGroup.getMeasurements();
+
     return measurements;
   }
-
 }
 
 module.exports = Gecko;

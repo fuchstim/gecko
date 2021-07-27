@@ -1,8 +1,9 @@
 const Gecko = require('./lib/gecko');
+const Profiler = require('./lib/profilers/profiler.class');
 
 function getOptions(parameters) {
   const defaultOptions = {
-    bindGlobal: true,
+    customProfilers: [],
   };
 
   return {
@@ -18,4 +19,5 @@ module.exports = parameters => {
   return gecko;
 };
 
-module.exports.GeckoPerf = Gecko;
+module.exports.Gecko = Gecko;
+module.exports.Profiler = Profiler;
