@@ -1,5 +1,5 @@
 const Group = require('./_group');
-const { addCustomProfiler } = require('../profilers');
+const { initProfilers, addCustomProfiler } = require('../profilers');
 
 class Gecko {
   constructor(options) {
@@ -15,6 +15,8 @@ class Gecko {
   }
 
   async run() {
+    await initProfilers();
+
     await this.rootGroup.execute();
 
     const measurements = this.rootGroup.getMeasurements();

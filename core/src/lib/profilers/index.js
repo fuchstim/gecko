@@ -7,4 +7,7 @@ module.exports = {
   custom: customProfilers,
 };
 
-module.exports.addCustomProfiler = p => this.customProfilers.push(p);
+module.exports.addCustomProfiler = p => customProfilers.push(p);
+module.exports.initProfilers = async () => {
+  await Promise.all(customProfilers.map(p => p.init()));
+};
