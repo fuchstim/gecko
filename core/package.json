@@ -7,9 +7,17 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Tim Fuchs <dev@ftim.eu>",
   "license": "ISC",
   "devDependencies": {
     "eslint": "^7.31.0"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fuchstim/gecko.git#master"
+  },
+  "bugs": {
+    "url": "https://github.com/fuchstim/gecko/issues"
   }
 }
