@@ -10,7 +10,7 @@
   "author": "Tim Fuchs <dev@ftim.eu>",
   "license": "ISC",
   "dependencies": {
-    "@geckoperf/core": "*",
+    "@geckoperf/core": "^0.0.1",
     "pg": "^8.7.0"
   },
   "devDependencies": {
