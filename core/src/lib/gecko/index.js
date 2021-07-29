@@ -1,3 +1,6 @@
+const fs = require('fs');
+const path = require('path');
+
 const Group = require('./_group');
 const { initProfilers, addCustomProfiler } = require('../profilers');
 
@@ -22,6 +25,31 @@ class Gecko {
     const measurements = this.rootGroup.getMeasurements();
 
     return measurements;
+  }
+
+  loadFile(filePath) {
+    require(path.resolve(filePath));
+  }
+
+  loadDirectory(path) {
+    const files = this._listFiles(path);
+
+    files.forEach(require);
+  }
+
+  _listFiles(path) {
+    const files = fs.readdirSync(path);
+
+    const results = [];
+    files.forEach(file => {
+      if (fs.statSync(path.resolve(path, file)).isDirectory()) {
+        results.push(...this._listFiles(path.resolve(path, file)));
+      } else {
+        results.push(path.resolve(path, file));
+      }
+    });
+
+    return results;
   }
 }
 

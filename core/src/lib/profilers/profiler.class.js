@@ -5,9 +5,7 @@ class Profiler {
     this.name = name;
   }
 
-  init() {
-    throw new Error('Profiler.init() must be implemented!');
-  }
+  init() { }
 
   start() {
     throw new Error('Profiler.start() must be implemented!');

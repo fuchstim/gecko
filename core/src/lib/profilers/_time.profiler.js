@@ -8,8 +8,6 @@ class TimeProfiler extends Profiler {
     this.stopTime = null;
   }
 
-  init() { }
-
   start() {
     return new TimeProfiler(process.hrtime.bigint());
   }
