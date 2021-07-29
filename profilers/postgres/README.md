@@ -1,4 +1,4 @@
-# Gecko Postgres Profiler
+# 🦎 Gecko Postgres Profiler
 ## The Gecko postgres profiler enables psql performance testing in your Gecko suite
 ### Installation
 To use the Gecko postgres profiler in your suite, install it using npm:
