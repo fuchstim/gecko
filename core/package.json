@@ -2,7 +2,7 @@
   "name": "@geckoperf/core",
   "version": "0.0.1",
   "description": "Gecko is a framework for simple, continous performance testing",
-  "homepage": "https://github.com/fuchstim/gecko",
+  "homepage": "https://github.com/fuchstim/gecko/tree/master/core",
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
