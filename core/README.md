@@ -97,7 +97,7 @@ function fn({
 #### Using Gecko results
 Usage: `const results = await gecko.run();`
 The `results` object is a tree that contains all measurements from the executed group / interactions. For the example code above, it looks as follows:
-```json
+```javascript
 [
   {
     id: '1234',
