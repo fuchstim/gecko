@@ -76,7 +76,7 @@ If you want to break up your groups into different files, you can use `gecko.loa
 ```
 
 #### Gecko Initialisation Options:
-1. `customProfilers`: Array of custom profilers
+`customProfilers`: Array of custom profilers
 
 #### Using `group`s
 Usage: `group(name: string, fn: function | async function)`
