@@ -12,18 +12,18 @@ class Interaction {
   }
 
   async execute({ hookResults }) {
-    const timer = profilers.time.start();
+    profilers.time.start();
 
-    const customProfilers = await Promise.all(
+    await Promise.all(
       profilers.custom.map(p => Promise.resolve(p.start()))
     );
 
     await Promise.resolve(this.fn.apply(this.fn, [{ hookResults }]));
 
-    const timeMeasurement = timer.stop();
+    const timeMeasurement = profilers.time.stop();
 
     const customProfilerMeasurements = await Promise.all(
-      customProfilers.map(p => Promise.resolve(p.stop()))
+      profilers.custom.map(p => Promise.resolve(p.stop()))
     );
 
     this.measurements = [ timeMeasurement, ...customProfilerMeasurements ];

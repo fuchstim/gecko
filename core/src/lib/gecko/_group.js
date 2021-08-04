@@ -32,17 +32,20 @@ class Group {
 
     const beforeHookResults = await this._executeHooks(this.hooks.before);
 
-    await this.children.reduce(async (promiseChain, child) => {
-      await promiseChain;
-
-      const beforeEachHookResults = await this._executeHooks(this.hooks.beforeEach);
-
-      await child.execute({ hookResults: { before: beforeHookResults, beforeEach: beforeEachHookResults } });
-
-      await this._executeHooks(this.hooks.afterEach);
-    }, Promise.resolve());
+    await this.children.reduce(
+      (promiseChain, child) => promiseChain.then(() => this._executeChild(child, { beforeHookResults })),
+      Promise.resolve()
+    );
 
     await this._executeHooks(this.hooks.after);
+  }
+
+  async _executeChild(child, { beforeHookResults }) {
+    const beforeEachHookResults = await this._executeHooks(this.hooks.beforeEach);
+
+    await child.execute({ hookResults: { before: beforeHookResults, beforeEach: beforeEachHookResults } });
+
+    await this._executeHooks(this.hooks.afterEach);
   }
 
   getMeasurements() {

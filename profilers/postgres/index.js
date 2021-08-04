@@ -32,10 +32,6 @@ class PostgresProfiler extends Profiler {
 
   async start() {
     await this._reset();
-
-    return {
-      stop: () => this.stop(),
-    };
   }
 
   async stop() {
