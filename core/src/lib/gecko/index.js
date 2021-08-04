@@ -31,21 +31,21 @@ class Gecko {
     require(path.resolve(filePath));
   }
 
-  loadDirectory(path) {
-    const files = this._listFiles(path);
+  loadDirectory(dirPath) {
+    const files = this._listFiles(dirPath);
 
     files.forEach(require);
   }
 
-  _listFiles(path) {
-    const files = fs.readdirSync(path);
+  _listFiles(dirPath) {
+    const files = fs.readdirSync(dirPath);
 
     const results = [];
-    files.forEach(file => {
-      if (fs.statSync(path.resolve(path, file)).isDirectory()) {
-        results.push(...this._listFiles(path.resolve(path, file)));
+    files.forEach(filePath => {
+      if (fs.statSync(path.resolve(dirPath, filePath)).isDirectory()) {
+        results.push(...this._listFiles(path.resolve(dirPath, filePath)));
       } else {
-        results.push(path.resolve(path, file));
+        results.push(path.resolve(dirPath, filePath));
       }
     });
 

@@ -1,6 +1,6 @@
 {
   "name": "@geckoperf/core",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Gecko is a framework for simple, continous performance testing",
   "homepage": "https://github.com/fuchstim/gecko/tree/master/core",
   "main": "src/index.js",
