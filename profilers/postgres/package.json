@@ -1,6 +1,6 @@
 {
   "name": "@geckoperf/profiler-postgres",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "This is an extension to Gecko that enables postgres performance testing",
   "homepage": "https://github.com/fuchstim/gecko/tree/master/profilers/postgres",
   "main": "index.js",
@@ -10,7 +10,7 @@
   "author": "Tim Fuchs <dev@ftim.eu>",
   "license": "ISC",
   "dependencies": {
-    "@geckoperf/core": "^0.0.1",
+    "@geckoperf/core": "0.0.2",
     "pg": "^8.7.0"
   },
   "devDependencies": {
