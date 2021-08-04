@@ -6,13 +6,29 @@ class PostgresProfiler extends Profiler {
   constructor(options = {}) {
     super('Postgres');
 
-    this.client = new Client({
+    let credentials = {
       user: options.user,
       host: options.host,
       database: options.database,
       password: options.password,
       port: options.port,
-    });
+    };
+
+    if (options.url) {
+      const { hostname: host, port, path, auth } = new URL(options.url);
+      const database = path.split('/', 2).pop();
+      const [ user, password ] = auth && auth.split(':', 2) || [];
+
+      credentials = {
+        user,
+        host,
+        database,
+        password,
+        port,
+      };
+    }
+
+    this.client = new Client(credentials);
   }
 
   async init() {
