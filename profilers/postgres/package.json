@@ -1,20 +1,22 @@
 {
   "name": "@geckoperf/profiler-postgres",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "This is an extension to Gecko that enables postgres performance testing",
   "homepage": "https://github.com/fuchstim/gecko/tree/master/profilers/postgres",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --recursive --exit ./test/"
   },
   "author": "Tim Fuchs <dev@ftim.eu>",
   "license": "ISC",
   "dependencies": {
-    "@geckoperf/core": "0.0.2",
+    "@geckoperf/core": ">=0.0.3",
     "pg": "^8.7.0"
   },
   "devDependencies": {
-    "eslint": "^7.31.0"
+    "assert": "^2.0.0",
+    "eslint": "^7.31.0",
+    "mocha": "^9.0.3"
   },
   "repository": {
     "type": "git",

@@ -15,13 +15,12 @@ class PostgresProfiler extends Profiler {
     };
 
     if (options.url) {
-      const { hostname: host, port, path, auth } = new URL(options.url);
-      const database = path.split('/', 2).pop();
-      const [ user, password ] = auth && auth.split(':', 2) || [];
+      const { hostname, port, pathname, username, password } = new URL(options.url);
+      const database = pathname.split('/', 2).pop();
 
       credentials = {
-        user,
-        host,
+        user: username,
+        host: hostname,
         database,
         password,
         port,
